@@ -230,7 +230,7 @@ val foo =
     "nope"
 
 // Prefer
-val foo = if(bar.baz) "yay" else "nope!
+val foo = if(bar.baz) "yay" else "nope!"
 
 // or prefer
 val foo = if (bar.baz) {
@@ -245,7 +245,7 @@ val foo = if (bar.baz) {
 ``` kotlin
 
 // Avoid
-val foo = "Hello there " + name +"!"
+val foo = "Hello there " + name + "!"
 
 // Prefer
 val foo = "Hello there $name!"
@@ -260,7 +260,7 @@ val foo = "Hello there $name!"
 - **when a function consists soley of a when exprssion use its brackets**
 
 ```kotlin
-
+// Avoid
 fun myWhen(willUGoOutWithMe : Outcomes): String {
   when(willUGoOutwithme) {
     is YourNotMyType -> "ok"
@@ -269,7 +269,7 @@ fun myWhen(willUGoOutWithMe : Outcomes): String {
     is IHaveARestrainingOrder -> "atleast i get surprise cuddles in jail"
   }
 }
-
+// Prefer
 fun myWhen(willUGoOutWithMe : Outcomes) = when(willUGoOutwithme) {
  is YourNotMyType -> "ok"
  is ImWayOutOfUrLeauge -> "ok"
