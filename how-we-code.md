@@ -255,7 +255,7 @@ val foo = "Hello there $name!"
 
 - **X, Y, A, B, C are acceptable  parameter names IFF for primary subjects of unary and binary functions** - Likewise, abbreviating the Type itself is OK.
 
-- **When creating functors or monads implement `map` and `flatMap` respectively. Example to come.
+- **When creating functors or monads implement `map` and `flatMap` respectively.** Example to come.
 
 - **when a function consists soley of a when exprssion use its brackets**
 
@@ -278,7 +278,7 @@ fun myWhen(willUGoOutWithMe : Outcomes) = when(willUGoOutwithme) {
 }
 ```
 
-- **Create empty functions using Unit instead of empty brackets
+- **Create empty functions using Unit instead of empty brackets**
 ``` kotlin
 // Avoid
 fun myFun() {}
@@ -286,7 +286,7 @@ fun myFun() {}
 fun myFun() = Unit
 ```
 
-- ** When doing a multiline data-class break the line at the parenthesis**
+- **When doing a multiline data-class break the line at the parenthesis**
 
 ``` kotlin
 // Prefer
