@@ -257,7 +257,7 @@ val foo = "Hello there $name!"
 
 - **When creating functors or monads implement `map` and `flatMap` respectively.** Example to come.
 
-- **when a function consists soley of a when exprssion use its brackets**
+- **When a function consists soley of a `when` expression, use its brackets**
 
 ```kotlin
 // Avoid
@@ -289,14 +289,15 @@ fun myFun() = Unit
 - **When doing a multiline data-class break the line at the parenthesis**
 
 ``` kotlin
+// Avoid
+data class Person(val firstName: String,
+                  val lastName: String,
+                  var age: Int)
+
 // Prefer
 data class Person(
     val firstName: String,
     val lastName: String,
     var age: Int
 )
-// Avoid
-data class Person(val firstName: String,
-                  val lastName: String,
-                  var age: Int)
 ```
