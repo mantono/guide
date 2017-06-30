@@ -28,6 +28,14 @@ Microservice for sending sms based on tasks
 - Use secrets store for unwrapping phonenumbers
 
 
+mail-outbound [_in progress_]
+-------------
+
+Sends emails to our customers
+
+- Properly connect to Mandrill API
+- Make async call to Mandrill?
+
 secrets-store
 --------------
 
