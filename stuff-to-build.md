@@ -83,13 +83,13 @@ view-maker (name tbd)
 Reduces over queues making views and storing them in redis
 
 - Runs on apache flink for stability and scalability
-- Writes to Redis
-- Triggers events for document viewer
+- Writes to Flink persistent storage
+- Triggers events for view-reader
 
-doc-store (name tbd)
+view-reader
 ---------------------------
 
-Exposes redis data, and applies access control rules. This redis data
+Exposes flink data, and applies access control rules. This data
 has two types documents and feeds. Documents are entirely overwritten
 on update, while feeds can be added to.
 
