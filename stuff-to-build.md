@@ -52,6 +52,23 @@ Service for performing the Swedish id-check
 - Add support for data-types
 - Add Redis support
 
+view-maker (name tbd) [in progress]
+----------------------
+Reduces over queues making views and storing them in redis
+
+- Runs on apache flink for stability and scalability
+- Writes to Flink persistent storage
+- Triggers events for view-reader
+
+view-reader [in progress]
+---------------------------
+
+Exposes flink data, and applies access control rules. This data
+has two types documents and feeds. Documents are entirely overwritten
+on update, while feeds can be added to.
+
+- Exposes data using a websocket
+- Users subscribes to a document and a new copy gets pushed when it is updated
 
 Not yet built
 ==============
@@ -76,26 +93,6 @@ Service validating and writing events to the kafka log for cases.
 case-maker (name tbd)
 ---------------------
 HTML web app for creating new cases
-
-
-view-maker (name tbd)
-----------------------
-Reduces over queues making views and storing them in redis
-
-- Runs on apache flink for stability and scalability
-- Writes to Flink persistent storage
-- Triggers events for view-reader
-
-view-reader
----------------------------
-
-Exposes flink data, and applies access control rules. This data
-has two types documents and feeds. Documents are entirely overwritten
-on update, while feeds can be added to.
-
-- Exposes data using a websocket
-- Users subscribes to a document and a new copy gets pushed when it is updated
-
 
 case-viewer (name tbd)
 ----------------------
