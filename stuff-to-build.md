@@ -48,10 +48,6 @@ se-id-check
 
 Service for performing the Swedish id-check
 
-- Flip around the UC values mapping so it goes from ourFieldCode -> UCW0000
-- Add support for data-types
-- Add Redis support
-
 view-maker (name tbd) [in progress]
 ----------------------
 Reduces over queues making views and storing them in redis
@@ -69,9 +65,6 @@ on update, while feeds can be added to.
 
 - Exposes data using a websocket
 - Users subscribes to a document and a new copy gets pushed when it is updated
-
-Not yet built
-==============
 
 se-credit-check (name tbd)
 ---------------------------
