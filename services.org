@@ -1,0 +1,236 @@
+#+TITLE: Services
+
+*  Services Shimming Desired Properties
+
+   This tier of services is concerned with adding properties that we
+   want to pull in in other services.
+
+** idempotence-store
+*** Purpose
+    The purpose of idempotence-store is to make non-naturally
+    idempotent operations idempotent.
+*** Implementation
+   Idempotence store ensures is simply an add only set which stores
+   all the idempotence tokens ever consumed, broken up by
+   namespace. This service is really simple, very widely used and
+   also the oldest in the system. Its semantics have _never_ been
+   revised.
+*** Operations
+**** PUT(namespace, key) -> Nothing
+     PUT puts a key into a particular namespace.
+**** GET(namespace, key) -> Boolean
+     GET indicates if a particular value has been put.
+
+** Secret-store
+*** Purpose
+    Secret-store creates opaque values, the isomorphism between
+    Opaque and secret values. In simpler terms we have a thing
+    generating values and storing the mapping between these generated
+    values and the original values.
+*** Implementation
+    We generate secret values as 64-bit snowflake IDs; Then we store
+    store the generated ID and the original value in a bimap.This is
+    the second oldest system, and hasn't seen any major revision.
+*** Operation
+**** WRAP(Value) -> OpaqueValue
+     Returns the OpaqueValue representing value, generating it if not
+     exists.
+**** UNWRAP(OpaqueValue) -> Value | NotFound | Deleted
+     Returns the original value represented by the opaque value if it
+     exists.
+**** ERASE(OpaqueValue) -> Nothing
+     Severs the relation between the OpaqueValue and the original.
+
+* HTTP Communication
+** Leia - Receiving webhooks
+*** Purpose
+     To receive a webhook a service must provide an always online
+     endpoint where services data can be delivered 24/7. This is not
+     something that is easy. We have no guarantees that third parties
+     will retry sending messages that we miss. We decided to build
+     a generic service for receiving HTTP traffic from both our browser
+     clients as well as third parties sending us data. Instead of
+     adding a web-server clients can simply listen to a Kafka topic
+     with all requests.
+*** Implementation
+    The functionality of this service is simple it receives HTTP
+    requests according to a configuration and writes them to Kafka -
+    also according to configuration.
+
+    It adds additional functionality such as verifying JWT-tokens at
+    runtime if required. It also adds a 64bit unique id to all
+    requests.
+
+** Katie - Sending webhooks
+*** Purpose
+    In sending data over HTTP it is also important to perform retries,
+    and for this purpose, we built Katie. Katie is sort of the reverse
+    of Leia. Instead of receiving HTTP it sends it.
+*** Implementation
+    Leia sends looks at its configuration, to find kafka topics to
+    read from and URLs to send to.
+
+    One additional functionality of Katie is that it sends HTTP
+    requests using the same format that Leia receives them
+    using. Allowing us to transparently forward requests, which might
+    be good for migration purposes.
+** TODO Logging proxy
+*** Purpose
+    Tracking HTTP traffic is important for understanding problems with
+    integrations.
+*** Implementation
+    An HTTP proxy that writes all requests to Kafka for further
+    processing.
+** TODO Credential/Client-cert applying proxy
+*** Purpose
+    We have a ton of credentials that which could be applied by
+    another service. This would help centralizing the management of
+    SSL certificates and other credentials.
+*** Implementation
+    An HTTP(S) proxy applying credentials automatically based on the
+    host we're communicating with.
+
+* SMSes
+
+** SMS-outbound
+*** Purpose
+    Sending SMSes
+*** Implementation
+    Worker taking Kafka messages and sending requests to Twilio.
+
+** SMS-inbound
+*** Purpose
+    Receiving SMSes and storing them
+*** Implementation
+    Takes Leia HTTP messages and converts them to a protobuf writing
+    them to Kafka.
+
+** SMS-status
+
+*** Purpose
+    Receiving SMS delivery statuses storing them.
+*** Implementation
+    Takes Leia HTTP messages and converts them to a protobuf writing
+    them to kafka.
+
+* Mail
+** Mail-outbound
+*** Purpose
+   Sending Emails
+*** Implementation
+    Takes EmailJobs and sends to our mail provider after checking idempotence.
+** Mail-inbound
+*** Purpose
+    Receiving Emails and storing them.
+*** Implementation
+    Receives webhooks, indicating inbound emails from leia and writes
+    them to the mail queue.
+** Mail-status
+*** Purpose
+    Receiving Email status notifications
+*** Implementation
+    Receives webhooks indicating mail statuses from leia and writes
+    them to the mail queue.
+
+* Read-model
+  The read-model is the read-side of the model, from which we get data for UIs, analytics etc.
+** View-maker
+*** Purpose
+    Indexing information stored into a queryable format in ES.
+*** Implementation
+    Reads (currently only SMSes) from queues and indexes them to Elasticsearch
+** es-reader
+*** Purpose
+    Exposes indexed information to the client.
+*** Implementation
+    Builds elasticsearch queries from input, queries the result and delivers them to clients.
+    Currently very non-generic and only works for SMSes.
+
+* External Data providers
+  External data providers need to have some of their semantics changed
+  to work well in our system.
+** se-id-check - Basic information
+*** Purpose
+    In Sweden most banks need basic information about a
+    person. se-id-check provides cached access to this data.
+*** Implementation
+    The system looks if the value has been cached or non-expired, if
+    it has not then it queries UC.
+** se-credit-check - Credit-worthiness informtaion
+*** Purpose
+    In Sweden most banks want some information before performing their
+    own credit-check. We therefore need to provide this information to
+    their APIs. Because there is cost associated with using UCs API it
+    needs to be cached, for a certain amount of time. Additionally the
+    system must have some notion of consent.
+*** Implementation
+    In order to do this we have caching service similar to
+    se-id-check, with two additional requirements. Requests are made
+    persuant to a particular consent-id which entitles the system to
+    perform exacly one credit-check, and second that a credit check is
+    valid only for certain period of time.
+
+* General storage
+** Document store
+*** Purpose
+    Some data that some banks want is not available from providers
+    such as UC. One such field is the current income, job etc, which
+    we collect from the applicant themselves. Another is their current
+    credit engagement which we don't have. We need a means of
+    providing documents to those who need them in a decoupled fashion.
+*** Implementation
+    Data is simply stored in a KV-store.
+*** Operations
+**** PUT(Path, Value) -> Nothing
+     Puts a document at the given Path, the path being a list of
+     segments.
+**** GET(Path) -> Value
+     Gets the document at path.
+
+* Internal notifications
+** sms-to-mail-notifications
+*** Purpose
+    Employees need to get notifications when they receive an SMS from
+    a customer. (It also needs to support legacy)
+*** Implementation
+    A simple kafka worker taking incoming smses and sending emails.
+
+* Bidding
+** Service-provider-agent(s)
+*** Purpose
+    A service provider agent listens to auction information, creating
+    applications, accepting or declining offers and tracks bid
+    progress through the system.
+** TODO partner-bid-ui
+*** Purpose
+    GUI where partners can place bids on cases relevant to them.
+** TODO case-viewer
+*** Purpose
+    GUI where Advisors can view cases.
+
+* TODO Scheduler
+** Purpose
+   Service that schedules an event to written to a log at a future
+   time. Uses idempotence ids so as to avoid double writes.
+** Implementation
+   Schedule something:
+   - If the time is in the past, write it now
+   - Otherwise write it to a priority queue and wake the priority queue worker
+
+   Priority queue worker:
+   - Peek at the priority queue if top is now or in the past, write to log
+   - Sleep until the next item is due.
+
+   Open question: Can this run on multiple nodes?
+
+* E-sign
+** TODO Scrive outbound
+*** Purpose
+    Listens to events creating e-sign documents as needed. Associates
+    the created document with the event causing its creation.
+*** Implementation
+    Listens to kafka writing HTTP requests to Scrive.
+** TODO Scrive status
+*** Purpose
+    Listens to webhooks from Scrive and forwards processed events as
+    requested by the initial creation event.
