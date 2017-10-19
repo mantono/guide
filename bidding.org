@@ -1,0 +1,69 @@
+#+TITLE: The bidding system: Cases, Auctions, Bids, Accepts/Rejects, Outcomes
+
+The most important part of the system is the Financial Services
+bidding system. It handles all the information that a comparing
+service such as our requires.
+
+This part of the system is the least clear part in my head, and I
+to some extent regret writting it down as it tends to lock down the
+mind.
+
+* Cases
+  A case connects CRM related metadata to a set of auctions for
+  products. A case represents an interaction stemming from a
+  channel (such as calling them). Auctions can have metadata such
+  as created by SalesPersonXYZ. They exist for traceability in
+  various interfaces.
+
+* Auctions
+  An auction is a tender for offers of offers for a certain kind of
+  product (NonsecuredLoanSE, LoanInsuranceSE, Blah)
+
+* Auction responses
+** Offer
+   An offer means that the partner is willing to offer services to the customer.
+
+   Offer(AuctionId, Id, AgentId, {CustomData})
+*** Informative
+    Provides some information regarding the processing of an auction
+**** Asyncronous Processing
+   AsyncProcessing(AuctionId, Id, AgentId)
+**** Manual Processing
+   The offer indicates that the partner will enter a bid into our system.
+   ManualProcessing(AuctionId, Id, AgentId)
+*** Rejections
+**** FilteredOut
+     Early filtering removed the offer
+     FilteredOut(AuctionId, Id, AgentId)
+**** Rejected
+     The third-party provider rejected the offer on their end
+     Rejected(AuctionId, Id, AgentId, Reason)
+*** Errors
+**** PartnerError
+     The agent backend returned an error
+**** InternalError
+     Our processing of the requests failed unexpectedly and we were unable to retry
+**** PartnerRecindedOffer
+     PartnerRecindedOffer(AuctionId, OfferId, AgentId)
+
+** Responses
+**** CustomerAcceptedOffer
+     - A customer accept consists CustomerAcceptedOffer(AuctionId, OfferId, AgentId)
+**** CustomerDeclinedOffer
+     - CustomerDeclinedOffer(AuctionId, OfferId, AgentId)
+
+** Intermediate Statuses
+   Outcomes are additional information provided by banks regarding
+   the status of a bid. Such as debenture sent debenture received, paid out et cetera.
+*** ESignRequested
+    - ESignRequested(AuctionId, OfferId, URL)
+
+
+** Portofolio outcomes
+*** Activated
+    When a product enters our portfolio and the customer and partner
+    have entered into the argeement. e.g. A loan gets disbursed
+
+    Activated(AuctionId, OfferId, Date, {})
+*** Deactivated
+    When the service brokered is no longer provided and the agreement canceled.
