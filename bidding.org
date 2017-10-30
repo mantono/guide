@@ -34,10 +34,10 @@ mind.
 *** Rejections
 **** FilteredOut
      Early filtering removed the offer
-     FilteredOut(AuctionId, Id, AgentId)
+     FilteredOut(AuctionId, Id, AgentId, Reason)
 **** Rejected
      The third-party provider rejected the offer on their end
-     Rejected(AuctionId, Id, AgentId, Reason)
+     Rejected(AuctionId, Id, AgentId)
 *** Errors
 **** PartnerError
      The agent backend returned an error
