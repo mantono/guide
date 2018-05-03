@@ -72,3 +72,7 @@ Mvh,
 
 [Name]
 
+
+# Premade email for lender integration meetings
+[Look at this google doc](https://docs.google.com/document/d/1Qp9d1_p7c846TLxICcvysR0N9_nvknBRrV8zpCMPgPw/edit)
+
