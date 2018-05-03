@@ -23,3 +23,52 @@
 # After the meeting
 - [ ] Compile meeting minutes along with action items and due dates (bcc: internally)
 - [ ] Track action in your trusted own system.
+
+# Pre-meeting email
+
+Hi,
+
+Thanks for taking the time to discuss [purpose of meeting]. We're excited to be working with you on [description of project]
+
+To make sure the meeting goes as smoothly as possible, it the meeting it would be great if you could assemble some materials before the meeting:
+
+[list of things you need]
+
+During the meeting itself we would like to discuss the following things:
+
+- **Name of point of discussion**: Clarifying description
+- ...
+
+Additionally we're hoping to reach a decision regarding the following things:
+- **Name of decision**: very clear description of what is to be decided.
+
+Looking forward to [hearing from you/seeing you] on [weekday]
+
+Best,
+
+[Name]
+
+# Pre-meeting email (sv)
+
+Hej,
+
+Tack för att ni tagit er tiden att diskutera [purpose of meeting]. Vi ser fram emot att arbete med er angående [description of project]
+
+För att se till att allt går så smidigt som möjligt så vore det väldigt hjälpsamt för mig om [du/ni] kunde samla ihop följande material innan mötet:
+
+[list of things you need]
+
+Under själva mötet skulle vi också vilja diskutera följande punkter:
+
+- **Name of point of discussion**: Clarifying description
+- ...
+
+Vi skulle även vilja fatta beslut angående
+- **Name of decision**: very clear description of what is to be decided.
+
+Vi [hörs/ses] på [Weekday].
+
+Mvh,
+
+[Name]
+
