@@ -76,3 +76,32 @@ Mvh,
 # Premade email for lender integration meetings
 [Look at this google doc](https://docs.google.com/document/d/1Qp9d1_p7c846TLxICcvysR0N9_nvknBRrV8zpCMPgPw/edit)
 
+# Post-meeting email
+
+Hi,
+
+Thanks for the meeting [describe when] I wanted to quickly recap on the meeting.
+
+[list action items: what, who, due date]
+
+We also decided that [decisions made]
+
+We also discussed: [recap important discussions]
+
+# Post-meeting email
+
+Hej,
+
+Tack för mötet [describe when]. Nedan följer en kort sammanställning av vad vi kom fram till. :)
+
+[list action items: what, who, due date]
+
+Vi beslutade också att [decisions made]
+
+Vi beslutade även: [recap important discussions]
+
+
+
+
+
+
