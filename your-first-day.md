@@ -22,3 +22,5 @@ During your first week we will make sure to schedule a visit with our
 sales and customer support teams so get a feel for our customers. This
 should hopefully get you a better understanding of the business side
 of things.
+
+If Will is your manager then make sure to read his [`README`-file](https://github.com/williamhogman/working-with-will/)
