@@ -1,7 +1,7 @@
 # Onboarding Checklist
 
-Manager: @NAME_OF_HIRING_MANAGER
-Buddy: @NAME_OF_BUDDY here
+- Manager: @NAME_OF_HIRING_MANAGER
+- Buddy: @NAME_OF_BUDDY here
 
 # Prelude
 - [ ] Manager: Create onboarding-issue for the person
@@ -14,15 +14,12 @@ Buddy: @NAME_OF_BUDDY here
 - [ ] Manager: fill out the new hire-form for HR
 
 # Routines
-
 - [ ] Manager: Add a new google calendar event `$NAME starts as $JOB_TITLE` to
   the Klira calendar
-
 - [ ] Manager: Add a recurring event `$NAME work aniversery` in the birthdays
   and anniversaries calendar
 - [ ] Manager: Add a recurring event `$NAME birthday` in the birthdays and
   anniversaries calendar.
-
 - [ ] Manager: Announce that the person will be joining the team in #general
 
 # Accounts
@@ -30,8 +27,12 @@ Buddy: @NAME_OF_BUDDY here
 - [ ] Manager: Add email alias firstname@klira.io and first.last.name@klira.io
 - [ ] Manager: Put the person in the right org. group on Google
 - [ ] Manager: Add the person to the email-groups `dev` and `team`.
-- [ ] New hire: Add Two-factor authentication to Github (e.g. using your Yubikey)
 
+Developers:
+
+- [ ] New hire: Add Two-factor authentication to Github (e.g. using your Yubikey)
+- [ ] Manager: Add new hire to `zensum` and `klira` Github orgs. (Unless integration contractor)
+- [ ] Manager: Add new hire to `klira` GitLab.com group
 
 # First day
 - [ ] Manager: Decide on a date for visit with sales
