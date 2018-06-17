@@ -28,12 +28,14 @@
 - [ ] Manager: Put the person in the right org. group on Google
 - [ ] Manager: Add the person to the email-groups `dev` and `team`.
 - [ ] Manager: Invite new hire to Klira Slack
+- [ ] Manager: Create a new Auth0 account for our internal services
 
 Developers:
 
 - [ ] New hire: Add Two-factor authentication to Github (e.g. using your Yubikey)
 - [ ] Manager: Add new hire to `zensum` and `klira` Github orgs. (Unless integration contractor)
 - [ ] Manager: Add new hire to `klira` GitLab.com group
+- [ ] Manager: Deploy SSH-keys for legacy servers
 
 # First day
 - [ ] Manager: Decide on a date for visit with sales
