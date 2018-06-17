@@ -49,10 +49,10 @@ during the day, just do it anytime.
 
 ## Working from home
 
-Working remotely is A-OK once in a while is A-OK, but we feel like
-longer stretches of remote work, is bad socially for the team. If
-coming into the office feels like a drag we have bigger issues to fix,
-if you don't feel like coming in to the office talk to your manager
-about it ASAP.
+Working remotely is A-OK once in a while, but we feel like longer
+stretches of remote work, is bad socially for the team. If coming into
+the office feels like a drag we have bigger issues to fix, if you
+don't feel like coming in to the office talk to your manager about it
+ASAP.
 
 If you're working remotely, tell your team in your team-chat on Slack.
