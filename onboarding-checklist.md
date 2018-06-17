@@ -27,6 +27,7 @@
 - [ ] Manager: Add email alias firstname@klira.io and first.last.name@klira.io
 - [ ] Manager: Put the person in the right org. group on Google
 - [ ] Manager: Add the person to the email-groups `dev` and `team`.
+- [ ] Manager: Invite new hire to Klira Slack
 
 Developers:
 
