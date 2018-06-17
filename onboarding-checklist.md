@@ -18,7 +18,7 @@
 # Payroll (Employees of Klira)
 - [ ] Manager: Ask the new hire for their first name, last name, nickname, phonenumber and birthday.
 - [ ] Manager: Send salary information to the HR manager + CC the CEO.
-- [ ] New hire: Fill out [new hire form](https://docs.google.com/forms/u/3/?tgif=d)
+- [ ] New hire: Fill out [new hire payroll form](https://goo.gl/forms/XpYAcPamsuBHhBr72), so we can pay you on time
 
 # Equipment
 - [ ] New hire: Fill out order for [Equipment](equipment.md)
