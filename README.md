@@ -8,3 +8,4 @@ This repo documents how we work at Klira
 - [Being an onboarding-buddy](being-a-buddy.md)
 - [Engineering docs](engineering/)
 - [Vacation & Sickdays](vacation-and-sickdays.md)
+- [Standup meetings](standup.md)
