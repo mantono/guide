@@ -7,3 +7,4 @@ This repo documents how we work at Klira
 - [Your first day](your-first-day.md)
 - [Being an onboarding-buddy](being-a-buddy.md)
 - [Engineering docs](engineering/)
+- [Vacation & Sickdays](vaccation-and-sickdays.md)
