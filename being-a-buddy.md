@@ -18,6 +18,6 @@ that you can focus on being a good buddy.
 
 # Buddy pairings
 
-| Buddy  | Hire  |
-|======= |=======|
-| ...    | ...   |
+| Buddy | Hire |
+|-------|------|
+| ...   | ...  |
