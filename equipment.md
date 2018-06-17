@@ -1,9 +1,9 @@
 # Equipment
 
-Please fill out the [equipment form](https://docs.google.com/forms/d/e/1FAIpQLScUbccyLtzzu5zvA3koxFHL-dKF_v2WznJUThJCNHlntMa8ag/viewform)
+Please fill out the [equipment form](https://docs.google.com/forms/d/e/1FAIpQLScUbccyLtzzu5zvA3koxFHL-dKF_v2WznJUThJCNHlntMa8ag/viewform) when you've made your choices.
 
-For developers and designer we offer your choice of hardware. For
-other roles we use Chromebook's for security.
+For developers and designers we offer your choice of hardware. For
+other roles we use Chromebooks for security.
 
 When ordering in Sweden we use [Dustin.se](https://dustin.se) for
 larger purchases (Computers) and [Webhallen.se](https://webhallen.se)
