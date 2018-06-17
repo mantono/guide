@@ -16,8 +16,8 @@
 - [ ] Manager: Create a new Auth0 account for our internal services
 
 # Payroll (Employees of Klira)
-- [ ] Manager: Ask the new hire for their first name, last name, nickname, clearing no., bank account number, social security number and birthday.
-- [ ] Manager: fill out the new hire-form for HR
+- [ ] Manager: Ask the new hire for their first name, last name, nickname, phonenumber and birthday.
+- [ ] Manager: Send salary information to the HR manager + CC the CEO.
 - [ ] New hire: Fill out [new hire form](https://docs.google.com/forms/u/3/?tgif=d)
 
 # Equipment
