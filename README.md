@@ -10,3 +10,4 @@ This repo documents how we work at Klira
 - [Vacation & Sickdays](vacation-and-sickdays.md)
 - [Standup meetings](standup.md)
 - [Reporting hours](reporting-hours.md)
+- [Single Responsible Individual (SRI)](single-responsible-indivudal.md)
