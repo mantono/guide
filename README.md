@@ -11,3 +11,4 @@ This repo documents how we work at Klira
 - [Standup meetings](standup.md)
 - [Reporting hours](reporting-hours.md)
 - [Single Responsible Individual (SRI)](single-responsible-individual.md)
+- [Invoices & Receipts](receipts-invoices.md)
